@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import "./ContactUs.css";
-import { FaHome, FaLongArrowAltDown, FaPhoneAlt } from "react-icons/fa";
+import { FaHome, FaPhoneAlt } from "react-icons/fa";
 import { MdMessage } from "react-icons/md";
 // import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
