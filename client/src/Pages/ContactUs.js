@@ -4,6 +4,14 @@ import { FaHome, FaPhoneAlt } from "react-icons/fa";
 import { MdMessage } from "react-icons/md";
 // import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import img4 from "../images/BookMyHostelIcon.png";
+import bed1 from "../images/bed1.jpg";
+import bed2 from "../images/bed2.jpg";
+import bed3 from "../images/bed3.jpeg";
+import bed4 from "../images/bed4.jpg";
+import bed5 from "../images/bed5.jpg";
+import bed6 from "../images/bed6.jpg";
+import { Link } from "react-router-dom";
 // import emailjs from "emailjs-com";
 // import { toast, ToastContainer } from 'react-toastify';
 export default function ContactUs() {
@@ -48,6 +56,7 @@ function Map() {
   // };
   return (
     <div>
+      <h1 className="contactus-head">Contact Us</h1>
       <div className="contact-info">
         <h1 className="contact-info-h1">Contact Us</h1>
         <div>
@@ -124,7 +133,63 @@ function Map() {
       <section className="footer-section">
         <div>
           <div className="footer">
-            <h1>This is footer</h1>
+            <div className="footer-box box1">
+              <img src={img4} alt="logo" width="100px" />
+              <i>"you think we provide"</i>
+              <p> do you have any query? Contactus</p>
+
+              <p> we will beglad to help you!</p>
+              <h3>director@niet.co.in</h3>
+              <h3> 2C/1, Knowledge Park-III, Greater Noida</h3>
+              <h3> 9599446607</h3>
+            </div>
+            <div className="footer-box">
+              <h1>Useful Links</h1>
+              <h3 className="usefull-links">
+                <Link to="/">Home</Link>
+                <Link to="/aboutus">About</Link>
+                <Link to="/contactus">ContactUs</Link>
+              </h3>
+            </div>
+            <div className="footer-box">
+              <h1>Inqueries</h1>
+              <h3 className="inquiry">
+                <Link>About Three Seater Bedroom</Link>
+              </h3>
+              <h3 className="inquiry">
+                <Link>About Two Seater Bedroom</Link>
+              </h3>
+              <h3 className="inquiry">
+                <Link>About single Seater Bedroom</Link>
+              </h3>
+              <h3 className="inquiry">
+                <Link>About Rent</Link>
+              </h3>
+            </div>
+            <div className="footer-box box1">
+              <h1>Pics Collection</h1>
+              <div className="bed12">
+                <img src={bed1} alt="pic1" width="100px" height="70px" />
+                <img src={bed2} alt="pic1" width="100px" height="70px" />
+              </div>
+              <div className="bed34">
+                <img src={bed3} alt="pic1" width="100px" height="70px" />
+                <img src={bed4} alt="pic1" width="100px" height="70px" />
+              </div>
+              <div className="bed56">
+                <img src={bed5} alt="pic1" width="100px" height="70px" />
+                <img src={bed6} alt="pic1" width="100px" height="70px" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="footer-end">
+          <h4>Copyrights © 2018-2020 NIET HOSTEL</h4>
+          <div className="company-link">
+            <h4>Designed by </h4>
+            <a target="_blank" href="http://inkubis.in">
+              <h3>ThreeBuddies Pvt. Ltd.</h3>
+            </a>
           </div>
         </div>
       </section>
