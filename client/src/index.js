@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import AboutUs from "./Pages/AboutUs";
 import ContactUs from "./Pages/ContactUs";
-import Auth from "./Pages/Auth/Auth";
+import Auth from "./Pages/Auth/Auth.js";
 import Sidebar from "./Components/SideBar";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
