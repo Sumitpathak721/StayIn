@@ -10,9 +10,9 @@
   opacity: 0.9;
 }
 .contactus-head {
-  margin-left: 46%;
-  margin-left: 10%;
   font-size: 50px;
+  margin-left: 46%;
+  margin-top: 10%;
 }
 .contact-info::before {
   content: "";
