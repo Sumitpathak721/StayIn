@@ -9,7 +9,6 @@
   margin-left: 10px;
   margin-top: -10px;
   margin-bottom: -10px;
-  border-radius: 30px;
 }
 
 .main-container {
@@ -17,7 +16,7 @@
 }
 
 .Sidebar {
-  background: #000000cf;
+  background: #01031c;
 
   color: white;
   height: 281vh;
@@ -41,35 +40,11 @@
   box-shadow: #354a35 -4px -4px;
 }
 
-/* .search {
-  display: flex;
-  align-items: center;
-
-  height: 30px;
-  padding: 10px;
-  margin-top: 1px;
-  margin-bottom: 13px;
-} */
 
 .icon {
   font-size: 25px;
 }
 
-/* .search_icon {
-  font-size: 35px;
-  margin-top: 8px;
-  margin-left: -6px;
-} */
-
-/* .search input {
-  border: none;
-  width: 162px;
-  margin-left: 10px;
-  border-radius: 5px;
-  background: rgb(238, 238, 238);
-  padding: 5px 10px;
-  height: 34px;
-} */
 
 .link {
   display: flex;
@@ -77,8 +52,6 @@
   gap: 10px;
   padding: 11px 10px;
   text-decoration: none;
-
-  /* transition: 0.2s cubic-bezier(0.6,-0.28, 0.735, 0.045); */
 }
 
 .link_text {
@@ -88,14 +61,15 @@
 .link:hover {
   border-right: 4px solid #a45959;
   /* transition: 0.2ms cubic-bezier(0.6,-0.28, 0.735, 0.045); */
-  background-color: #698f93;
+  background-color: #fdff78;
+  color:black;
+  transition-duration: 0.2s;
 }
 
 .active {
   border-right: 4px solid #a45959;
-  /* transition: 0.2ms cubic-bezier(0.6,-0.28, 0.735, 0.045); */
-
-  background-color: #698f93;
+  color:black;
+  background-color: #fdff78;
 }
 
 .bars {
@@ -109,7 +83,6 @@
 
 .register {
   margin-left: 0%;
-  /* background-color: #282c34; */
   width: 55%;
   height: 110%;
 

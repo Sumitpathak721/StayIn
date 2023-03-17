@@ -1,22 +1,14 @@
 import "./sidebar.css";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import img1 from "./BMHlogo1.jpg";
+import img1 from "../images/BookMyHostelIcon.png";
 import {
   FaHome,
   FaBars,
-  FaPhotoVideo,
-  FaEye,
   FaBriefcase,
-  FaPhoneAlt,
-  FaLock,
-  FaLockOpen,
+  FaPhoneAlt
 } from "react-icons/fa";
-// import { MdMessage } from "react-icons/md";
-import { BiSearch } from "react-icons/bi";
-// import { AiFillHeart, AiTwotoneFileExclamation } from "react-icons/ai";
+import {BsPersonFillAdd} from "react-icons/bs"
 
-import { BsCartCheck } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
@@ -31,47 +23,20 @@ const routes = [
     name: "AboutUs",
     icon: <FaBriefcase />,
   },
-  // {
-  //   path: "/galary",
-  //   name: "Galary",
-  //   icon: <FaPhotoVideo />,
-  // },
-
-  // {
-  //   path: "/ourfacility",
-  //   name: "OurFacility",
-  //   icon: <BsCartCheck />,
-  // },
-  // {
-  //   path: "/virtualtour",
-  //   name: "VirtualTour",
-  //   icon: <FaEye />,
-  // },
   {
     path: "/contactus",
     name: "ContactUs",
     icon: <FaPhoneAlt />,
   },
   {
-    path: "/login",
-    name: "Login",
-    icon: <FaLockOpen />,
-  },
-  {
-    path: "/signup",
-    name: "SignUp",
-    icon: <FaLock />,
+    path: "/auth",
+    name: "Login/SignUp",
+    icon: <BsPersonFillAdd />,
   },
 ];
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
-  const auth = localStorage.getItem("user4");
-  const navigate = useNavigate();
-  const logout = () => {
-    localStorage.clear();
-    navigate("/SignUp");
-  };
 
   const toggle = () => setIsOpen(!isOpen);
   return (
@@ -82,7 +47,6 @@ const Sidebar = ({ children }) => {
       >
         <div className="top_section">
           {isOpen && <img src={img1} alt="logo" className="logo" />}
-          {/* {isOpen && <h1 className="website-name">BookMyHostel.com</h1>} */}
 
           <div className="bars">
             <FaBars onClick={toggle} />
