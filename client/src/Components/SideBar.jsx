@@ -77,7 +77,7 @@ const Sidebar = ({ children }) => {
   return (
     <div className="main-container">
       <motion.div
-        animate={{ width: isOpen ? "223px" : "40px" }}
+        animate={{ width: isOpen ? "200px" : "40px" }}
         className="Sidebar"
       >
         <div className="top_section">
@@ -98,7 +98,7 @@ const Sidebar = ({ children }) => {
               key={route.name}
             >
               <div className="icon">{route.icon}</div>
-              <div className="link_text">{route.name}</div>
+              {isOpen && <div className="link_text">{route.name}</div>}
             </NavLink>
           ))}
         </section>

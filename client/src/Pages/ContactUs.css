@@ -1,0 +1,118 @@
+.contact-info-div::before {
+  content: "";
+  position: absolute;
+  background: url("./contactusBMH.jpg") no-repeat center center/cover;
+  height: 381px;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.9;
+}
+.contact-info::before {
+  content: "";
+  position: absolute;
+  background-color: #f6eded;
+  height: 381px;
+
+  left: 0px;
+  margin-top: -132px;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.contact-info {
+  margin-top: 35%;
+  margin-left: 145px;
+}
+.contact-info-h1 {
+  /* margin-top: ; */
+
+  margin-left: 45%;
+  margin-top: -28px;
+  margin-bottom: 85px;
+  font-size: 44px;
+}
+.contact-info-div {
+  display: flex;
+  flex-direction: row;
+
+  /* margin-left: 29%; */
+}
+
+.contact-icon {
+  margin-left: 56px;
+  font-size: 29px;
+  color: white;
+  background-color: #640e0ec2;
+  padding: 10px;
+  border-radius: 5px;
+  padding-bottom: 3px;
+}
+.contact-details {
+  padding-left: 10px;
+  font-size: 30px;
+}
+.contactus-form {
+  width: 70%;
+  margin-left: 180px;
+  margin-top: 10%;
+  border-radius: 5px;
+}
+.contactus-form h1 {
+  margin-left: 33%;
+  font-size: 43px;
+}
+.upload-signupBox {
+  display: block;
+  padding: 10px;
+  width: 83%;
+  margin: 22px;
+  border-radius: 5px;
+
+  border: 1px solid #640e0ec2;
+  margin-left: 55px;
+}
+.btn3 {
+  display: block;
+  width: 83%;
+  padding: 10px;
+  margin-left: 56px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 54px;
+  background-color: #640e0ec2;
+  cursor: pointer;
+}
+
+.map-alt {
+  color: red;
+}
+.map-container {
+  display: flex;
+  height: 500px;
+  width: 600px;
+  margin-top: 20%;
+  margin-right: 10px;
+}
+.contactForm-map {
+  display: flex;
+  justify-content: center;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  background-color: #000000e6;
+  height: 735px;
+  left: 0px;
+  margin-top: -378px;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.9;
+}
+.footer {
+  margin-top: 33%;
+  margin-left: 48%;
+}
