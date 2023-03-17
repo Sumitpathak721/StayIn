@@ -1,1 +1,25 @@
-//Your all code
+//import Dependency
+const express = require('express');
+const cors = require('cors');
+const dotenv = require("dotenv");
+
+dotenv.config();
+
+//Configuration
+const Root = express();
+
+
+
+//Middleware Setup
+Root.use(express.json());
+
+
+
+//All Routes
+Root.use('/signup',require('./Routes/signup.js'));
+Root.use('/login',require('./Routes/login.js'));
+Root.use('/verify',require('./Routes/verify.js'));
+
+
+//Listening Root
+Root.listen(process.env.PORT);

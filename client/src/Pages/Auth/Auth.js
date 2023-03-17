@@ -33,7 +33,7 @@ function Auth(){
 }
 
 const SignUp = () => {
-    const [userID,setUserID]= useState("");
+    const [Name,setName]= useState("");
     const [Email,setEmail]=useState("");
     const [Password,setPassword]=useState("");
 
@@ -58,7 +58,7 @@ const SignUp = () => {
     const Register = async()=>{
         let result = await fetch('/signup',{
             method:"post",
-            body:JSON.stringify({userID,Email,Password}),
+            body:JSON.stringify({Name,Email,Password}),
             headers:{
                 'Content-Type':"application/json"
             }   
@@ -66,19 +66,16 @@ const SignUp = () => {
         result = await result.json();
         if(result.flag==='done'){
             setresponseColor("green");
-            setresponseBgColor("#34e934");
+            setresponseBgColor("rgb(193 255 193)");
+            
             setresponseText("Verification Email Sent to your E-Mail :)");
-            setUserID("");
+            setName("");
             setEmail("");
             setPassword("");
         }else if(result.flag==="wrong"){
             setresponseColor("#b70000");
             setresponseBgColor("rgb(255 151 151)");
             setresponseText("Failed to Register!!");
-        }else if(result.flag==="userID registered"){
-            setresponseColor("#b70000");
-            setresponseBgColor("rgb(255 151 151)");
-            setresponseText("This ID already exixt,try again!!");
         }else{
             setresponseColor("#767600");
             setresponseBgColor("#ffec41");
@@ -90,7 +87,7 @@ const SignUp = () => {
             <h1 style={{paddingTop:"20px"}}>Create Account</h1>
             <h3 className="Respond" style={respond}>{respondText}</h3>
             <form id="Detail">
-                <input type="name" placeholder="Name" value={userID} onChange={(e)=>setUserID(e.target.value)}/><br/>
+                <input type="name" placeholder="Name" value={Name} onChange={(e)=>setName(e.target.value)}/><br/>
                 <input type="email" placeholder="Email" value={Email} onChange={(e)=>setEmail(e.target.value)}/><br/>
                 <input type="password" placeholder="password" value={Password} onChange={(e)=>setPassword(e.target.value)}/>
                 
