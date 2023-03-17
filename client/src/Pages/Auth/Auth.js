@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Auth.css";
-import {Link} from "react-router-dom";
+import {Link, Navigate, useNavigate} from "react-router-dom";
 import img1 from "../../images/BookMyHostelIcon.png";
 
 function Auth(){
     const [isLogin,setIsLogin] = useState(true);
+
+    let nav = useNavigate();
+    useEffect(()=>{
+        console.log("user");
+        if(localStorage.getItem("user")){
+            nav('/profile');
+        }
+    },[])
     return(
         <div id="outerBox">
             <div id="innerBox">
@@ -97,11 +105,10 @@ const SignUp = () => {
     )
 }
 
-
 const Login=()=>{
     const [Email,setEmail] = useState("");
     const [Password,setPassword] = useState("");
-
+    
     //flag styling
     const [flagColor,setflagColor] = useState("");
     const [flagBgColor,setflagBgColor] = useState("");
@@ -178,8 +185,6 @@ const Login=()=>{
         </>
     )
 }
-
-
 
 const ForgetPassword =()=>{
   //User Entered Email

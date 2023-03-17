@@ -1,6 +1,7 @@
 const express = require('express');
 const sendEmail = require("./sendEmail.js")
 require('../db/config.js');
+const bcrypt = require("bcryptjs");
 const users = require('../db/User.js');
 const dotenv = require("dotenv");
 dotenv.config();
@@ -14,15 +15,23 @@ router.post('/',async(req,res)=>{
     
     if(req.body.Email && req.body.Password){
         
-        let result = await users.findOne({Email:req.body.Email.toLowerCase(),Password:req.body.Password});
-        if(result){
-            if(result.isValid){
-                res.send({flag:"verified",Response:{
-                    Email:result.Email,
-                    UniqueID:result.uniqueID,
-                }});
+        let result = await users.findOne({Email:req.body.Email.toLowerCase()});
+        
+        if(result){    
+            let isPassword = await bcrypt.compare(req.body.Password,result.Password);
+            
+            if(isPassword){
+                if(result.isVerified){
+                    res.send({flag:"verified",Response:{
+                        Email:result.Email,
+                        UniqueID:result.uniqueID,
+                        Access:result.Access
+                    }});
+                }else{
+                    res.send({flag:"not verified"})
+                }
             }else{
-                res.send({flag:"not verified"})
+                res.send({flag:"wrong"});
             }
         }else{
             res.send({flag:"wrong"});

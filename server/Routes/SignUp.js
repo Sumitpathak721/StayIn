@@ -2,6 +2,7 @@
 const express = require('express');
 const sendEmail = require('./sendEmail.js');
 const dotenv = require("dotenv");
+const bcrypt = require("bcryptjs");
 dotenv.config();
 //DataBase Configuration
 require('../db/config.js');
@@ -38,11 +39,11 @@ router.post('/',async(req,res)=>{
                 user = await users.findOne({uniqueID:uniqueID});
             }
             if(uniqueID){
-            
+            req.body.Password=await bcrypt.hash(req.body.Password,10);
             req.body.uniqueID = uniqueID;
-            req.body.isValid = false;
+            req.body.isVerified = false;
             req.body.Email = Email;
-            req.body.views = 0;
+            req.body.Access = "User";
             
             let newUser = new users(req.body);
             
