@@ -12,7 +12,7 @@ router.get('/:uniqueID',async(req,res)=>{
     const user = await users.findOne({uniqueID:uniqueID});
     
     if(user){
-        user.isValid = true;
+        user.isVerified = true;
         await user.save();
         res.send({done:true});
     }else{
