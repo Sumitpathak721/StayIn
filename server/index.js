@@ -7,7 +7,7 @@ dotenv.config();
 
 //Configuration
 const Root = express();
-// Root.use(cors());
+Root.use(cors());
 
 //Middleware Setup
 Root.use(express.json());
@@ -16,6 +16,8 @@ Root.use(express.json());
 Root.use("/signup", require("./Routes/signup.js"));
 Root.use("/login", require("./Routes/login.js"));
 Root.use("/verify", require("./Routes/verify.js"));
+Root.use("/api", require("./Routes/Home.js"));
+Root.use("/hostels", require("./Routes/Home.js"));
 
 //Listening Root
 Root.listen(process.env.PORT);
