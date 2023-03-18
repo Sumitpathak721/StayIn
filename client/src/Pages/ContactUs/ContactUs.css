@@ -110,7 +110,7 @@
 .footer::before {
   content: "";
   position: absolute;
-  background-color: #000000e6;
+  background-color: #212529;
   height: 446px;
   left: 0px;
   margin-top: -25px;
