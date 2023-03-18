@@ -40,7 +40,6 @@ router.post("/", async (req, res) => {
         req.body.uniqueID = uniqueID;
         req.body.isVerified = false;
         req.body.Email = Email;
-        req.body.Access = "User";
 
         let newUser = new users(req.body);
 

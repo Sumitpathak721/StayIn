@@ -41,9 +41,10 @@ const Db = () => {
             type="text"
             placeholder="Search Hostel"
             className="input-Box"
+            
             onChange={searchHandle}
           />
-          <FaSearch className="icons" />
+          <label><FaSearch className="icons" /></label>
         </div>
         <ScrollableFeed>
           {hosteldata.map((singledata) => (
@@ -56,8 +57,8 @@ const Db = () => {
 
       <section className="database-section">
         <div className="detail-member-btn">
-          <button className="btn">Detail</button>
-          <button className="btn">Member</button>
+          <button>Detail</button>
+          <button>Member</button>
         </div>
         <div className="db-section1">
           <ScrollableFeed>

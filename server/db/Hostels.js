@@ -1,11 +1,27 @@
 const mongoose = require("mongoose");
 
 const HostelSchema = new mongoose.Schema({
-  name: String,
-  no_of_floor: Number,
-  no_of_room: Number,
+  Name: String,
+  Floors: [{type:Object}],
+  /*Floors=[
+    FLoor1:{
+      Rooms=[
+        {
+         seater:
+         vacent:
+        }
+      ]
+    }
+  ]
+  */
+  Photos:[{
+    Url:String,
+    contentType:String
+  }],
   isBooked: { type: Boolean, default: false },
   rating: String,
+  Email:String,
+  Address:String,
 });
 
 const HostelModel = mongoose.model("hostels", HostelSchema);
