@@ -1,0 +1,83 @@
+.db-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 23%;
+  margin-top: 57px;
+  height: 650px;
+  width: 1080px;
+  border: 1px solid brown;
+}
+.db-sidebar-section {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 10px;
+  border: 1px solid brown;
+  background-color: rgb(5, 147, 121);
+  width: 300px;
+}
+.db-sidebar-section img {
+  margin-left: 30%;
+}
+.search-icon {
+  display: flex;
+  margin-top: 22px;
+  margin-left: 22px;
+}
+.input-Box {
+  height: 30px;
+  width: 77%;
+  border: 1px solid brown;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.icons {
+  font-size: 30px;
+  color: white;
+  background-color: brown;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.database-section {
+  display: flex;
+  border: 1px solid green;
+  margin: 10px 10px;
+  width: 780px;
+}
+.db-section1 {
+  display: flex;
+  border: 1px solid green;
+  margin: 10px 10px;
+  width: 780px;
+  margin-top: 76px;
+  margin-left: -147px;
+  background-color: green;
+}
+
+.hostel-names {
+  display: flex;
+}
+.hostel-names a {
+  text-decoration: none;
+
+  padding: 10px;
+  margin-left: 19px;
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+.detail-member-btn {
+  display: flex;
+  flex-direction: row;
+}
+
+.btn {
+  height: 38px;
+  width: 71px;
+  margin-left: 7px;
+  margin-top: 20px;
+  background-color: rgb(5, 147, 121);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+}
