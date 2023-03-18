@@ -2,9 +2,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./Pages/Home";
+import Home from "./Pages/Home/Home";
 import AboutUs from "./Pages/AboutUs";
-import ContactUs from "./Pages/ContactUs";
+import ContactUs from "./Pages/ContactUs/ContactUs";
 import Auth from "./Pages/Auth/Auth.js";
 import Sidebar from "./Components/SideBar";
 

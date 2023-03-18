@@ -4,13 +4,13 @@ import { FaHome, FaPhoneAlt } from "react-icons/fa";
 import { MdMessage } from "react-icons/md";
 // import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-import img4 from "../images/BookMyHostelIcon.png";
-import bed1 from "../images/bed1.jpg";
-import bed2 from "../images/bed2.jpg";
-import bed3 from "../images/bed3.jpeg";
-import bed4 from "../images/bed4.jpg";
-import bed5 from "../images/bed5.jpg";
-import bed6 from "../images/bed6.jpg";
+import img4 from "../../images/BookMyHostelIcon.png";
+import bed1 from "../../images/bed1.jpg";
+import bed2 from "../../images/bed2.jpg";
+import bed3 from "../../images/bed3.jpeg";
+import bed4 from "../../images/bed4.jpg";
+import bed5 from "../../images/bed5.jpg";
+import bed6 from "../../images/bed6.jpg";
 import { Link } from "react-router-dom";
 // import emailjs from "emailjs-com";
 // import { toast, ToastContainer } from 'react-toastify';
@@ -25,35 +25,6 @@ export default function ContactUs() {
 
 function Map() {
   const center = useMemo(() => ({ lat: 44, lng: -80 }), []);
-
-  // const [to_name, setTo_name] = useState("");
-  // const [from_name, setFrom_name] = useState("");
-  // const [message, setMessage] = useState("");
-  // const [phone, setPhone] = useState("");
-  // const submitInfo = async () => {
-  //   console.log(to_name + from_name + message + phone);
-
-  //   const emailContent = {
-  //     to_name: "sujeet sharma",
-  //     from_name: from_name,
-  //     message: message,
-  //     phone: phone,
-  //   };
-
-  //   const result = await emailjs.send(
-  //     "service_cwppc19",
-  //     "template_vuho8df",
-  //     emailContent,
-  //     "qyqTvA1JgKgYNrJID"
-  //   );
-  //   if (result) {
-  //     console.log(result);
-  //     // toast("Email sent successfully")
-  //   } else {
-  //     console.log("error has occured");
-  //     // toast("something wents wrong")
-  //   }
-  // };
   return (
     <div>
       <h1 className="contactus-head">Contact Us</h1>
