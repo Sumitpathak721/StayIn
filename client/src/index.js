@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home.js";
 import AboutUs from "./Pages/AboutUs";
-import ContactUs from "./Pages/ContactUs/ContactUs";
+import ContactUs from "./Pages/ContactUs/ContactUs.js";
 import Auth from "./Pages/Auth/Auth.js";
 import Sidebar from "./Components/SideBar";
 import DataBase from "./Pages/DB/db.js";

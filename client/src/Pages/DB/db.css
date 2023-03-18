@@ -1,37 +1,38 @@
 .db-container {
   display: flex;
   flex-direction: row;
-  margin-left: 23%;
-  margin-top: 57px;
-  height: 650px;
-  width: 1080px;
+  margin:10px auto;
+  height: 97vh;
+  width: 90%;
   border: 1px solid brown;
 }
 .db-sidebar-section {
   display: flex;
   flex-direction: column;
-  margin: 10px 10px;
   border: 1px solid brown;
   background-color: rgb(5, 147, 121);
-  width: 300px;
+  width: 25%;
 }
 .db-sidebar-section img {
-  margin-left: 30%;
+  margin:5px auto;
 }
 .search-icon {
   display: flex;
   margin-top: 22px;
-  margin-left: 22px;
+  padding:auto;
+  justify-content: center;
 }
 .input-Box {
-  height: 30px;
-  width: 77%;
+  height: 35px;
+  padding:5px;
+  width: 80%;
   border: 1px solid brown;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  outline: none;
 }
 .icons {
-  font-size: 30px;
+  font-size: 35px;
   color: white;
   background-color: brown;
   border-top-right-radius: 5px;
@@ -39,18 +40,35 @@
 }
 .database-section {
   display: flex;
+  flex-direction: column;
   border: 1px solid green;
-  margin: 10px 10px;
-  width: 780px;
+  width: 75%;
 }
+
+.detail-member-btn {
+  display: flex;
+  flex-direction: row;
+  padding:10px;
+}
+
+.detail-member-btn button{
+  height: 38px;
+  width: 71px;
+  margin-right:10px;
+  background-color: rgb(5, 147, 121);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+
 .db-section1 {
   display: flex;
+  flex-direction: column;
   border: 1px solid green;
-  margin: 10px 10px;
-  width: 780px;
-  margin-top: 76px;
-  margin-left: -147px;
-  background-color: green;
+  height:100%;
+  padding:5px 10px;
 }
 
 .hostel-names {
@@ -58,26 +76,6 @@
 }
 .hostel-names a {
   text-decoration: none;
-
   padding: 10px;
-  margin-left: 19px;
-  margin-top: 20px;
   font-size: 30px;
-}
-
-.detail-member-btn {
-  display: flex;
-  flex-direction: row;
-}
-
-.btn {
-  height: 38px;
-  width: 71px;
-  margin-left: 7px;
-  margin-top: 20px;
-  background-color: rgb(5, 147, 121);
-  border: none;
-  color: white;
-  border-radius: 5px;
-  font-size: 16px;
 }

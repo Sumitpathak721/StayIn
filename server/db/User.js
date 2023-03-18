@@ -6,7 +6,6 @@ const userSchema = mongoose.Schema({
     Password:String,
     isVerified:Boolean,
     uniqueID:String,
-    Access:String,
-    
+    Access:{type:String,default:"user"},  
 })
 module.exports = mongoose.model('users',userSchema);
