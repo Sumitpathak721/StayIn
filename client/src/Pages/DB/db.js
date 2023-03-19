@@ -4,9 +4,13 @@ import { FaSearch } from "react-icons/fa";
 import img from "../../images/BookMyHostelIcon.png";
 import { Link } from "react-router-dom";
 import ScrollableFeed from "react-scrollable-feed";
+import SideBarDiv from "./sideBarDiv/sideBarDiv.js";
 
 const Db = () => {
+  //All State
   const [hosteldata, setHosteldata] = useState([]);
+
+
   useEffect(() => {
     getHostelData();
   }, []);
@@ -14,8 +18,10 @@ const Db = () => {
   const getHostelData = async () => {
     let result = await fetch("/hostels");
     result = await result.json();
-    console.log(result);
-    setHosteldata(result);
+    if(result.respond==='done'){
+      setHosteldata(result.result);
+    }
+    
   };
 
   const searchHandle = async (event) => {
@@ -23,9 +29,11 @@ const Db = () => {
     if (key) {
       let result = await fetch(`/hostels/search/${key}`);
       result = await result.json();
-
+      console.log(result);
       if (result) {
         setHosteldata(result);
+      }else{
+        setHosteldata([]);
       }
     } else {
       getHostelData();
@@ -49,13 +57,11 @@ const Db = () => {
         </div>
         <ScrollableFeed>
           {hosteldata.map((singledata) => (
-            <div className="hostel-names">
-              <Link>{singledata.hostel_name}</Link>
-            </div>
+            <SideBarDiv key={singledata.Name+singledata.Address} hostel={singledata}/>
           ))}
         </ScrollableFeed>
       </section>
-
+      
       <section className="database-section">
         <div className="detail-member-btn">
           <button>Detail</button>

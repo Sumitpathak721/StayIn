@@ -10,8 +10,8 @@ const userSchema = mongoose.Schema({
     Myhostel:{
         type:Object,
         default:{
-            haveHostel:{type:Boolean,default:false},
-            hostel:{type:mongoose.Schema.Types.ObjectId,ref:"Hostel"}
+            haveHostel:false,
+            hostel:{type:mongoose.Schema.Types.ObjectId}
         }
         /*  If Hostel Booked
             Myhostel:{

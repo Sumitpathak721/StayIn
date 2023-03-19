@@ -18,6 +18,7 @@ const HostelSchema = new mongoose.Schema({
     Url:String,
     contentType:String
   }],
+  Members:[{type:mongoose.Schema.Types.ObjectId,ref:"Members"}],
   rating: {type:Number,default:0},
   Email:String,
   Address:String,
