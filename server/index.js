@@ -18,6 +18,7 @@ Root.use("/login", require("./Routes/login.js"));
 Root.use("/verify", require("./Routes/verify.js"));
 Root.use("/api", require("./Routes/Home.js"));
 Root.use("/hostels", require("./Routes/Home.js"));
+Root.use("/save", require("./Routes/Hostel.js"));
 
 //Listening Root
 Root.listen(process.env.PORT);

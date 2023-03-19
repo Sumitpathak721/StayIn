@@ -18,7 +18,7 @@ router.get("/hostels", async (req, resp) => {
 
 router.get("/search/:key", async (req, resp) => {
   let result = await HostelModel.find({
-    $or: [{ name: { $regex: req.params.key } }],
+    $or: [{ hostel_name: { $regex: req.params.key } }],
   });
   resp.send(result);
 });
