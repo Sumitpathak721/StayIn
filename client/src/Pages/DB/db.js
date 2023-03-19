@@ -12,7 +12,7 @@ const Db = () => {
   }, []);
 
   const getHostelData = async () => {
-    let result = await fetch("/api/hostels");
+    let result = await fetch("/hostels");
     result = await result.json();
     console.log(result);
     setHosteldata(result);

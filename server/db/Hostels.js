@@ -18,7 +18,6 @@ const HostelSchema = new mongoose.Schema({
     Url:String,
     contentType:String
   }],
-  isBooked: { type: Boolean, default: false },
   rating: String,
   Email:String,
   Address:String,
