@@ -21,7 +21,7 @@ let upload = multer({ storage: storage });
 
 router.post("/hostelDetails", upload.single("room_pics"), async (req, resp) => {
   const data = new HostelModel({
-    hostel_name: req.body.hostel_name,
+    name: req.body.name,
     floor: req.body.floor,
     room: req.body.room,
     seater: req.body.seater,
@@ -29,7 +29,7 @@ router.post("/hostelDetails", upload.single("room_pics"), async (req, resp) => {
     isBooked: req.body.isBooked,
     Photos: {
       Url: req.file.path,
-      contentType: "/image.jng",
+      contentType: "/image.jpg",
     },
     rating: req.body.rating,
     Email: req.body.Email,

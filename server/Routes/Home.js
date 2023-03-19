@@ -7,7 +7,7 @@ const HostelModel = require("../db/Hostels");
 const { find } = require("../db/User");
 const router = express.Router();
 
-router.get("/hostels", async (req, resp) => {
+router.get("/", async (req, resp) => {
   const hosteldata = await HostelModel.find({});
   if (hosteldata) {
     resp.send(hosteldata);
