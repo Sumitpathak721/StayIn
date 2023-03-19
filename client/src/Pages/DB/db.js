@@ -21,7 +21,7 @@ const Db = () => {
   const searchHandle = async (event) => {
     let key = event.target.value;
     if (key) {
-      let result = await fetch(`/api/search/${key}`);
+      let result = await fetch(`/hostels/search/${key}`);
       result = await result.json();
 
       if (result) {
@@ -41,15 +41,16 @@ const Db = () => {
             type="text"
             placeholder="Search Hostel"
             className="input-Box"
-            
             onChange={searchHandle}
           />
-          <label><FaSearch className="icons" /></label>
+          <label>
+            <FaSearch className="icons" />
+          </label>
         </div>
         <ScrollableFeed>
           {hosteldata.map((singledata) => (
             <div className="hostel-names">
-              <Link>{singledata.name}</Link>
+              <Link>{singledata.hostel_name}</Link>
             </div>
           ))}
         </ScrollableFeed>
@@ -63,11 +64,12 @@ const Db = () => {
         <div className="db-section1">
           <ScrollableFeed>
             <h3>this is the databse section</h3>
-            {hosteldata.map((singledata) => (
+            {/* {hosteldata.map((singledata) => (
               <div>
                 <Link>{singledata.name}</Link>
               </div>
-            ))}
+            ))} */}
+            {<Link>{hosteldata.hostel_name}</Link>}
           </ScrollableFeed>
         </div>
       </section>
