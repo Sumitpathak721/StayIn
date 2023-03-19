@@ -18,7 +18,7 @@ const HostelSchema = new mongoose.Schema({
     Url:String,
     contentType:String
   }],
-  rating: String,
+  rating: {type:Number,default:0},
   Email:String,
   Address:String,
 });
