@@ -1,5 +1,9 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const MongoDB = require("mongodb");
+
+
+
 dotenv.config();
 require("../db/Hostels.js");
 
@@ -7,7 +11,6 @@ const HostelModel = require("../db/Hostels.js");
 const User = require("../db/User.js");
 
 const multer = require("multer");
-const { route } = require("./signup.js");
 
 const router = express.Router();
 
@@ -63,10 +66,13 @@ router.post("/hostelDetails", upload.single("room_pics"), async (req, resp) => {
     resp.send({ result: "Error occured" });
   }
 });
-
+//to change user accesibility to organizer
 router.post("/makeOrganizer",async(req,res)=>{
   const Organizer = await User.findOne({Email:req.body.Email});
   const HostelObj = await HostelModel.findOne({Name:req.body.Hostel_name});
+  console.log(Organizer);
+  console.log(HostelObj);
+
   if(HostelObj==null){
     res.send({respond:"false"});
   }else if(Organizer==null){
@@ -80,6 +86,40 @@ router.post("/makeOrganizer",async(req,res)=>{
     Organizer.save();
     res.send({respond:"done"});
     console.log(Organizer);
+  }
+});
+
+//Get All members of the hostel
+
+router.get("/getMembers",async(req,res)=>{
+  Organizer=await User.findOne({Email:req.body.Email});
+  if(Organizer.Access==="Organization" ){
+    Hostel = await HostelModel.findOne({"_id":Organizer.Myhostel.hostel})
+    res.send({respond:"done",result:Hostel.Members});
+  }else{
+    res.send({respond:"false"});
+  }
+});
+
+//Add hostelrs
+router.post("/addMember",async(req,res)=>{
+  user=await User.findOne({Email:req.body.Email});
+  if(user){
+    if(user.Myhostel.haveHostel){//In case if user already have an hostel
+      res.send({respond:"false"})
+    }else{
+    hostel = await HostelModel.findOne({Name:req.body.hostel_name});
+    hostel.Members.push(user._id)
+    user.Myhostel={
+      haveHostel:true,
+      hostel:hostel._id
+    }
+    await hostel.save();
+    await user.save();
+    res.send({respond:"ok"});
+  }
+  }else{
+    res.send({respond:"false"});
   }
 });
 

@@ -4,21 +4,20 @@ dotenv.config();
 require("../db/config");
 
 const HostelModel = require("../db/Hostels");
-const { find } = require("../db/User");
 const router = express.Router();
 
 router.get("/", async (req, resp) => {
   const hosteldata = await HostelModel.find({});
   if (hosteldata) {
-    resp.send(hosteldata);
+    resp.send({respond:"done",result:hosteldata});
   } else {
-    resp.send({ result: "err" });
+    resp.send({ respond: "err",result:null });
   }
 });
 
 router.get("/search/:key", async (req, resp) => {
   let result = await HostelModel.find({
-    $or: [{ hostel_name: { $regex: req.params.key } }],
+    $or: [{ Name: { $regex: req.params.key } }],
   });
   resp.send(result);
 });
