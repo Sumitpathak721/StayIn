@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./Auth.css";
-import {Link, Navigate, useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import img1 from "../../images/BookMyHostelIcon.png";
 
 function Auth(){
     const [isLogin,setIsLogin] = useState(true);
+    const [authbtntext,setauthbtntext] = useState("Create New Account");
 
     let nav = useNavigate();
     useEffect(()=>{
-        console.log("user");
-        if(localStorage.getItem("user")){
+        if(localStorage.getItem("token")){
             nav('/profile');
         }
     },[])
@@ -26,19 +26,25 @@ function Auth(){
                         <h3>{(isLogin)?"Provide your credential to verify you":"Become a member a our community"}</h3>
                     </div>
                     <img src={img1} alt="BookMyHostel" />
-                    <button onClick={()=>{(isLogin)?setIsLogin(false):setIsLogin(true)}}>{(isLogin)?"New Register":"LogIn"}</button>
                 </div>
                 
                 <div id="AuthCredential">
+                    <div>
                     {(isLogin)?
-                    <Login/>:<SignUp/>
+                        <Login/>:<SignUp/>
                     }
+                    <div style={{marginTop:"40px"}}>    
+                        <Link style={{display:"inline"}} onClick={()=>{if(isLogin){setIsLogin(false);setauthbtntext("back to login")}else{setIsLogin(true);setauthbtntext("Create New Account")}}}>{authbtntext}</Link>
+                    </div>
+                    </div>
                     
                 </div>
             </div>
         </div>
     )
 }
+
+  
 
 const SignUp = () => {
     const [Name,setName]= useState("");
@@ -63,7 +69,7 @@ const SignUp = () => {
 
     //displa flag to approach unique userID
 
-    const Register = async()=>{
+    const Register = async(props)=>{
         let result = await fetch('/signup',{
             method:"post",
             body:JSON.stringify({Name,Email,Password}),
@@ -100,12 +106,12 @@ const SignUp = () => {
                 <input type="password" placeholder="password" value={Password} onChange={(e)=>setPassword(e.target.value)}/>
                 
             </form>
-            <button type="submit" onClick={Register}>SignUp</button>
+            <button className="SignInButton" type="submit" onClick={Register}>SignUp</button>
         </>
     )
 }
 
-const Login=()=>{
+const Login=(props)=>{
     const [Email,setEmail] = useState("");
     const [Password,setPassword] = useState("");
     
@@ -125,16 +131,17 @@ const Login=()=>{
     const SignIn = async()=>{
         let result = await fetch("/login",{
             method:"post",
+            
             body:JSON.stringify({Email,Password}),
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
             }
         });
         result = await result.json();
         
         if(result.flag==="verified"){
             
-            localStorage.setItem("user",JSON.stringify(result.Response));
+            localStorage.setItem("token",JSON.stringify(result.token));
             setEmail("");
             setPassword("");
             //Reload the page when user just logged In
@@ -177,7 +184,8 @@ const Login=()=>{
                 
                 <Link onClick={forgetPassword} >Forgot password?</Link>
             </form>
-            <button type="submit" onClick={SignIn}>SignIn</button>
+            <button className="SignInButton" type="submit" onClick={SignIn}>SignIn</button>
+            
         </>:
         <ForgetPassword/>
         }
@@ -227,7 +235,7 @@ const ForgetPassword =()=>{
         <form>
         <input type="text" style={{padding:"5px",width:"80%",height:"30px"}} value={Email} name="Email" onChange={(e)=>{setEmail(e.target.value)}} placeholder="Enter your Email" />
         </form>
-        <button type="submit" style={{margin:"10px"}} onClick={SendEmail}>Sent E-Mail</button>
+        <button className="SignInButton" type="submit" style={{margin:"10px"}} onClick={SendEmail}>Sent E-Mail</button>
         
       </>
   )

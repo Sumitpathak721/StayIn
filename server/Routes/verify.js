@@ -5,17 +5,17 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 //for verification email in signup
+
 router.get("/:uniqueID", async (req, res) => {
   const { uniqueID } = req.params;
-
   const user = await users.findOne({ uniqueID: uniqueID });
 
   if (user) {
-    user.isValid = true;
+    user.isVerified = true;
     await user.save();
-    res.send({ done: true });
+    res.send({ status: "Success" });
   } else {
-    res.send({ done: false });
+    res.send({ status: "Failed" });
   }
 });
 router.put("/ResetPassword", async (req, res) => {

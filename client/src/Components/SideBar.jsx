@@ -1,6 +1,7 @@
 import "./sidebar.css";
 import { motion } from "framer-motion";
 import img1 from "../images/BookMyHostelIcon.png";
+import axios from "axios";
 import {
   FaHome,
   FaBars,
@@ -12,62 +13,79 @@ import {HiUserGroup} from "react-icons/hi";
 import {CgProfile,CgLogOut} from "react-icons/cg";
 import {BiCoinStack} from "react-icons/bi";
 
-import { NavLink ,Link, useNavigate} from "react-router-dom";
+import { NavLink ,Link} from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import Oauth from "../Oauth";
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [PvtSection,setPvtSection] = useState([]);
+  const [token,setToken] = useState(localStorage.getItem('token'));
+  const [user,setUserInfo] = useState({});
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+          const response = await Oauth(token);
+          setUserInfo(response);
+          if (response && response.Email != null && response.UniqueID != null) {
+            if (response.Access === "Organization") {
+              setPvtSection([
+                {
+                  path: "/viewHostel",
+                  name: "Hostlers",
+                  icon: <HiUserGroup />
+                },
+                {
+                  path: "/profile",
+                  name: "Profile",
+                  icon: <CgProfile />
+                }
+              ]);
+            } else if (response.Access === "Developer") {
+              setPvtSection([
+                {
+                  path: "/DB",
+                  name: "DB",
+                  icon: <BiCoinStack />
+                },
+                {
+                  path: "/profile",
+                  name: "Profile",
+                  icon: <CgProfile />
+                }
+              ]);
+            } else if (response.Access === "user") {
+              setPvtSection([
+                {
+                  path: "/profile",
+                  name: "Profile",
+                  icon: <CgProfile />
+                }
+              ]);
+            }
+          } else {
+            setPvtSection([
+              {
+                path: "/auth",
+                name: "Login/SignUp",
+                icon: <BsPersonFillAdd />
+              }
+            ]);
+          }
+        } catch (error) {
+          setPvtSection([
+            {
+              path: "/auth",
+              name: "Login/SignUp",
+              icon: <BsPersonFillAdd />
+            }
+          ]);
+          // Handle error if needed
+        }
+      };
+    fetchData();
+  }, [token]);
   
-  useEffect(()=>{
-    var user = localStorage.getItem('user');
-    user = JSON.parse(user);
-    if(user && user.Email!=null && user.UniqueID!=null){
-      
-      if(user.Access==="Organization"){
-        setPvtSection([
-          {
-            path:"/viewHostel",
-            name:"Hostlers",
-            icon:<HiUserGroup/>
-          },
-          {
-            path:"/profile",
-            name:"Profile",
-            icon:<CgProfile/>
-          }
-        ])
-      }else if(user.Access==="Developer"){
-        setPvtSection([
-          {
-            path:"/DB",
-            name:"DB",
-            icon:<BiCoinStack/>
-          },
-          {
-            path:"/profile",
-            name:"Profile",
-            icon:<CgProfile/>
-          }
-        ])
-      }else if(user.Access==="User"){
-        setPvtSection([
-          {
-            path:"/profile",
-            name:"Profile",
-            icon:<CgProfile/>
-          }
-        ])
-      }
-    }else{
-      setPvtSection([{
-        path: "/auth",
-        name: "Login/SignUp",
-        icon: <BsPersonFillAdd />,
-      }])
-    }
-  },[localStorage.getItem("user")])
   const routes = [
     {
       path: "/",
@@ -83,11 +101,9 @@ const Sidebar = ({ children }) => {
       path: "/contactus",
       name: "ContactUs",
       icon: <FaPhoneAlt />,
-    },...PvtSection
-  ];
+    },...PvtSection];
   
   const toggle = () => setIsOpen(!isOpen);
-  const nav = useNavigate();
   return (
     <div className="main-container">
       <motion.div
@@ -115,10 +131,10 @@ const Sidebar = ({ children }) => {
               {isOpen && <div className="link_text">{route.name}</div>}
             </NavLink>
           ))}
-          {(localStorage.getItem('user'))?
+          {(localStorage.getItem('token'))?
           <Link 
             activeClassName="active"
-            className="link" onClick={()=>{localStorage.clear();}}
+            className="link" onClick={()=>{localStorage.clear();setToken("")}}
             to="/auth"
           >
               <div className="icon"><CgLogOut/></div>

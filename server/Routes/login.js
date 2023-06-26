@@ -4,6 +4,7 @@ require('../db/config.js');
 const bcrypt = require("bcryptjs");
 const users = require('../db/User.js');
 const dotenv = require("dotenv");
+const jwt = require("jsonwebtoken");
 dotenv.config();
 
 
@@ -12,21 +13,24 @@ const router = express.Router();
 
 //Check and respond for login crediential
 router.post('/',async(req,res)=>{
-    
     if(req.body.Email && req.body.Password){
         
         let result = await users.findOne({Email:req.body.Email.toLowerCase()});
-        
+        // console.log(result);
         if(result){    
             let isPassword = await bcrypt.compare(req.body.Password,result.Password);
             
             if(isPassword){
+                data = {
+                    Email:result.Email,
+                    UniqueID:result.uniqueID,
+                    Access:result.Access
+                };
+                const token = jwt.sign(data,process.env.JWT_SECRET_TOKEN);
+                
+
                 if(result.isVerified){
-                    res.send({flag:"verified",Response:{
-                        Email:result.Email,
-                        UniqueID:result.uniqueID,
-                        Access:result.Access
-                    }});
+                    res.send({flag:"verified",token:token}); 
                 }else{
                     res.send({flag:"not verified"})
                 }
@@ -45,10 +49,11 @@ router.post('/',async(req,res)=>{
 //post api for forget password
 //ResetEmail stands for Reset Password Email
 router.post("/ResetEmail",async(req,res)=>{
-    
     if(req.body.Email){
 
-        let result = await users.findOne(req.body);
+        let Email = req.body.Email.toLowerCase();
+        let result = await users.findOne({"Email":Email});
+        console.log(Email);
         if(result){
             
             let subject = "Reset Password Email";
