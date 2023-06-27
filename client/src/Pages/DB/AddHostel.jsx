@@ -43,8 +43,8 @@ function AddHostel() {
 
   //handling uniqueID onSubmit
   const handleUniqueID = ()=>{
-    const regex1 = new RegExp('/^[a-zA-Z0-9]+_/');
-    let response =  '/^[a-zA-Z0-9]+_/'.test(UniqueID);
+    let regex1 = new RegExp('/^[a-zA-Z0-9]+_/');
+    let response =  regex1.test(UniqueID);
     console.log(response);
     return response;
 

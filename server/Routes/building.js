@@ -35,7 +35,6 @@ const storage = multer.diskStorage({
 });
 let upload = multer({ storage: storage });
 router.post("/addBuilding",verifyToken,upload.fields([{name:'images',maxCount:20},{name:"videos",maxCount:10}]),async(req,res)=>{
-  console.log(req.body);  
   req.body.accessibleMember=req.body.accessibleMember.split(",");
     for(let i=0;i<req.body.accessibleMember.length;i++){
       let user = await UserModel.findOne({"Email":req.body.accessibleMember[i]});
